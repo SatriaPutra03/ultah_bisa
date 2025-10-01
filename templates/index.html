@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Zahrotulsita ❤️</title>
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      background: url('https://i.imgur.com/orKt8cm.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      top: 10%;
+      padding: 15px;
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: gold;
+      text-shadow: 0 0 8px rgba(255,215,0,0.8),
+                   0 0 15px rgba(255,215,0,0.6);
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.6;
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* tombol musik */
+    #playBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 8px 14px;
+      font-size: 14px;
+      background: gold;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 0 8px rgba(255,215,0,0.7);
+    }
+
+    /* tombol navigasi slide */
+    .navBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 8px 14px;
+      font-size: 14px;
+      background: rgba(255,215,0,0.8);
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 3;
+      margin-right: 8px;
+    }
+
+    .navBtn#nextBtn {
+      left: 150px;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <h1>🎉 Selamat Ulang Tahun Zahrotulsita 🎉</h1>
+      <div class="message">
+        Hari ini adalah hari yang spesial, karena kamu dilahirkan ke dunia untuk memberi warna dalam hidupku.<br><br>
+        Terima kasih sudah hadir, menemani, dan jadi bagian penting dalam perjalanan ini.<br><br>
+        Semoga ulang tahunmu kali ini membawa banyak kebahagiaan dan berkah. ❤️
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <h1>🌸 First Impression 🌸</h1>
+      <div class="message">
+        Aku bersyukur setiap hari bisa mengenalmu, berbagi cerita, tawa, bahkan diam yang terasa nyaman.<br><br>
+        Kamu bukan hanya pasangan, tapi juga sahabat terbaik yang selalu ada.<br><br>
+        Bersamamu, aku belajar bahwa cinta itu sederhana: saling mengerti, saling menerima, dan saling menjaga.
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <h1>✨ My Expectation ✨</h1>
+      <div class="message">
+        Aku berharap di setiap langkahmu, kamu selalu dikuatkan dan dimudahkan.<br><br>
+        Aku ingin kamu percaya bahwa semua mimpimu bisa tercapai, dan aku akan selalu ada di sampingmu untuk mendukung.<br><br>
+        Kebahagiaanmu adalah bahagiaku juga.
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <h1>💕 My Promise 💕</h1>
+      <div class="message">
+        Aku mungkin bukan orang sempurna, tapi aku berjanji akan selalu berusaha jadi yang terbaik untukmu.<br><br>
+        Kita akan melewati banyak hal bersama, entah itu mudah ataupun sulit.<br><br>
+        Selama kamu menggenggam tanganku, aku tidak akan melepaskannya.
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <h1>❤️ Last For Me ❤️</h1>
+      <div class="message">
+        Sayang, ulang tahunmu hanyalah satu hari dalam setahun.<br><br>
+        Tapi cintaku, perhatianku, dan doaku untukmu, ada setiap hari tanpa henti.<br><br>
+        Semoga di setiap senyummu, ada aku yang jadi alasan.<br><br>
+        Selamat ulang tahun, cinta. Aku mencintaimu, hari ini, besok, dan selamanya ❤️
+      </div>
+    </div>
+  </div>
+
+  <!-- musik -->
+  <audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/3shcqy.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <!-- tombol musik -->
+  <button id="playBtn">🎵 Putar Musik</button>
+
+  <!-- tombol navigasi -->
+  <button class="navBtn" id="prevBtn">⬅️ Sebelumnya</button>
+  <button class="navBtn" id="nextBtn">➡️ Berikutnya</button>
+
+  <!-- bunga jatuh -->
+  <canvas id="petals"></canvas>
+
+  <script>
+    // slide logic
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    });
+
+    // musik
+    const music = document.getElementById('bg-music');
+    const playBtn = document.getElementById('playBtn');
+
+    playBtn.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        playBtn.textContent = "⏸️ Pause Musik";
+      } else {
+        music.pause();
+        playBtn.textContent = "🎵 Putar Musik";
+      }
+    });
+
+    // bunga sakura jatuh
+    const canvas = document.getElementById('petals');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const petals = [];
+    const sakura = "🌸";
+
+    for (let i = 0; i < 30; i++) {
+      petals.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: Math.random() * 1 + 0.5,
+        drift: Math.random() * 1 - 0.5,
+        size: Math.random() * 20 + 15
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      petals.forEach(p => {
+        ctx.font = `${p.size}px serif`;
+        ctx.fillText(sakura, p.x, p.y);
+        p.y += p.speed;
+        p.x += p.drift;
+
+        if (p.y > canvas.height) {
+          p.y = -20;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
